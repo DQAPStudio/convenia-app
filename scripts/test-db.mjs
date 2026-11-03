@@ -12,7 +12,7 @@ create function auth.uid() returns uuid language sql stable as $$ select nullif(
 grant usage on schema public, auth to authenticated, anon;
 grant execute on function auth.uid() to authenticated, anon;
 `);
-await q(fs.readFileSync('./supabase/migrations/0001_init.sql','utf8'));
+for (const f of fs.readdirSync('./supabase/migrations').sort()) await q(fs.readFileSync('./supabase/migrations/' + f, 'utf8'));
 await q(`grant select, insert, delete on all tables in schema public to authenticated; grant update on public.offers, public.companies to authenticated;`);
 await q(fs.readFileSync('./supabase/seed.sql','utf8'));
 const U = { alu:'00000000-0000-0000-0000-00000000000a', emp:'00000000-0000-0000-0000-00000000000e', cen:'00000000-0000-0000-0000-00000000000c', alu2:'00000000-0000-0000-0000-00000000000b' };

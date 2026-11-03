@@ -34,13 +34,12 @@ scripts/test-db.mjs  Prueba del flujo completo en un Postgres en memoria
 ## Arrancar en local
 
 1. `npm install`
-2. Copia `.env.example` a `.env` y pon la URL y la clave *anon* de Supabase.
-3. `npx expo start` y abre la app con Expo Go o un simulador.
+2. `npx expo start` y abre la app con Expo Go o un simulador.
 
 ## Base de datos
 
 1. Crea el proyecto en Supabase en la región **Frankfurt (eu-central-1)**.
-2. Ejecuta `supabase/migrations/0001_init.sql` (SQL Editor o `supabase db push`).
+2. Ejecuta los archivos de `supabase/migrations/` en orden (SQL Editor o `supabase db push`).
 3. En **Auth → Email templates → Magic link**, añade el código: `Tu código es {{ .Token }}`.
 4. Da de alta cada centro a mano (ver `supabase/seed.sql`). Te da dos códigos:
    - `student_code`: para los alumnos.

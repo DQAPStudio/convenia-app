@@ -1,13 +1,17 @@
 import 'react-native-url-polyfill/auto';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
+import Constants from 'expo-constants';
 import { AppState, Platform } from 'react-native';
 
-const url = process.env.EXPO_PUBLIC_SUPABASE_URL;
-const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
+// La URL y la clave publicable son públicas por diseño: la seguridad está en RLS.
+// Se pueden cambiar con .env (por ejemplo, para un proyecto de pruebas).
+const extra = Constants.expoConfig?.extra ?? {};
+const url = process.env.EXPO_PUBLIC_SUPABASE_URL || extra.supabaseUrl;
+const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || extra.supabasePublishableKey;
 
 if (!url || !anonKey) {
-  throw new Error('Faltan EXPO_PUBLIC_SUPABASE_URL y EXPO_PUBLIC_SUPABASE_ANON_KEY. Copia .env.example a .env.');
+  throw new Error('Falta la configuración de Supabase en app.json (extra) o en .env.');
 }
 
 export const supabase = createClient(url, anonKey, {

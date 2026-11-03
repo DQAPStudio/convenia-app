@@ -11,10 +11,15 @@
       "bundleIdentifier": "es.convenia.app",
       "buildNumber": "1",
       "supportsTablet": false,
-      "config": { "usesNonExemptEncryption": false },
+      "config": {
+        "usesNonExemptEncryption": false
+      },
       "infoPlist": {
         "CFBundleDevelopmentRegion": "es",
-        "CFBundleLocalizations": ["es", "ca"]
+        "CFBundleLocalizations": [
+          "es",
+          "ca"
+        ]
       }
     },
     "android": {
@@ -49,7 +54,9 @@
     "extra": {
       "privacyUrl": "https://convenia.es/privacidad",
       "termsUrl": "https://convenia.es/terminos",
-      "supportUrl": "https://convenia.es/soporte"
+      "supportUrl": "https://convenia.es/soporte",
+      "supabaseUrl": "https://pqdzstciktfavlspvmlg.supabase.co",
+      "supabasePublishableKey": "sb_publishable_qp-pg-xL486xqoNYtYJEqA_r9J4gyY0"
     }
   }
 }
